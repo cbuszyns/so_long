@@ -6,7 +6,7 @@
 /*   By: cbuszyns <cbuszyns@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 15:00:12 by cbuszyns          #+#    #+#             */
-/*   Updated: 2022/05/17 13:05:51 by cbuszyns         ###   ########.fr       */
+/*   Updated: 2022/05/17 14:46:24 by cbuszyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define SO_LONG_H
 
 # include "./Libft/libft.h"
-# include "ft_printf/ft_printf.h"
+# include "./ft_printf/ft_printf.h"
 # include <unistd.h>
 # include "./minilibx_mms_20200219/mlx.h"
 # include <fcntl.h>

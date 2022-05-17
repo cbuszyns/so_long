@@ -6,7 +6,7 @@
 /*   By: cbuszyns <cbuszyns@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:48:00 by cbuszyns          #+#    #+#             */
-/*   Updated: 2022/05/17 13:08:42 by cbuszyns         ###   ########.fr       */
+/*   Updated: 2022/05/17 14:53:43 by cbuszyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	move_up(t_vars *vars)
 {
+	vars->steps++;
+	ft_printf("Steps: %d\n", vars->steps);
 	if (vars->map[vars->player_y - 1][vars->player_x] == '1')
 		return ;
 	if (vars->map[vars->player_y - 1][vars->player_x] == 'E' && vars->coin == 0)
@@ -31,12 +33,12 @@ void	move_up(t_vars *vars)
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img[2], vars->player_x * 64, vars->player_y * 64);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img[1], vars->player_x * 64, (vars->player_y - 1) * 64);
 	vars->player_y--;
-	vars->steps++;
-	ft_printf("Steps:\n");
 }
 
 void	move_down(t_vars *vars)
 {
+	vars->steps++;
+	ft_printf("Steps: %d\n", vars->steps);
 	if (vars->map[vars->player_y + 1][vars->player_x] == '1')
 		return ;
 	if (vars->map[vars->player_y + 1][vars->player_x] == 'E' && vars->coin == 0)
@@ -58,6 +60,8 @@ void	move_down(t_vars *vars)
 
 void	move_left(t_vars *vars)
 {
+	vars->steps++;
+	ft_printf("Steps: %d\n", vars->steps);
 	if (vars->map[vars->player_y][vars->player_x - 1] == '1')
 		return ;
 	if (vars->map[vars->player_y][vars->player_x - 1] == 'E' && vars->coin == 0)
@@ -79,6 +83,8 @@ void	move_left(t_vars *vars)
 
 void	move_right(t_vars *vars)
 {
+	vars->steps++;
+	ft_printf("Steps: %d\n", vars->steps);
 	if (vars->map[vars->player_y][vars->player_x + 1] == '1')
 		return ;
 	if (vars->map[vars->player_y][vars->player_x + 1] == 'E' && vars->coin == 0)

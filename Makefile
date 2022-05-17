@@ -6,7 +6,7 @@
 #    By: cbuszyns <cbuszyns@student.42roma.it>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/10 14:57:20 by fdrudi            #+#    #+#              #
-#    Updated: 2022/05/17 12:49:12 by cbuszyns         ###   ########.fr        #
+#    Updated: 2022/05/17 14:49:25 by cbuszyns         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ $(NAME):	$(OBJ)
 			make -C ./libft
 			make -C ./minilibx_mms_20200219
 			make -C ./ft_printf
-			$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(MLX) $(LIBFT)
+			$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(MLX) $(LIBFT) $(FT_PRINTF)
 
 all:		$(NAME)
 

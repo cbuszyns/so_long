@@ -6,7 +6,7 @@
 /*   By: cbuszyns <cbuszyns@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:48:00 by cbuszyns          #+#    #+#             */
-/*   Updated: 2022/05/17 14:53:43 by cbuszyns         ###   ########.fr       */
+/*   Updated: 2022/05/17 16:39:45 by cbuszyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@ void	move_up(t_vars *vars)
 	if (vars->map[vars->player_y - 1][vars->player_x] == '1')
 		return ;
 	if (vars->map[vars->player_y - 1][vars->player_x] == 'E' && vars->coin == 0)
+	{
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->img[2], vars->player_x * 64, vars->player_y * 64);
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->img[1], vars->player_x * 64, (vars->player_y - 1) * 64);
 		ft_close(vars);
+	}
 	else if (vars->map[vars->player_y - 1][vars->player_x] == 'E' && vars->coin > 0)
 		return ;
 	if (vars->map[vars->player_y - 1][vars->player_x] == 'C')

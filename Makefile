@@ -6,7 +6,7 @@
 #    By: cbuszyns <cbuszyns@student.42roma.it>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/10 14:57:20 by fdrudi            #+#    #+#              #
-#    Updated: 2022/05/17 14:49:25 by cbuszyns         ###   ########.fr        #
+#    Updated: 2022/05/17 16:51:49 by cbuszyns         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ CFLAGS		=	-Wall -Wextra -Werror
 
 $(NAME):	$(OBJ)
 			make -C ./libft
-			make -C ./minilibx_mms_20200219
+			make -C ./mlx
 			make -C ./ft_printf
 			$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(MLX) $(LIBFT) $(FT_PRINTF)
 
@@ -48,7 +48,7 @@ fclean: 	clean
 
 fclean.all:	fclean
 			make fclean -C libft
-			make clean -C minilibx_mms_20200219
+			make clean -C mlx
 			make fclean -C ft_printf
 
 re:			fclean all

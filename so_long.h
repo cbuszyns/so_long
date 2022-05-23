@@ -6,7 +6,7 @@
 /*   By: cbuszyns <cbuszyns@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 15:00:12 by cbuszyns          #+#    #+#             */
-/*   Updated: 2022/05/17 16:50:55 by cbuszyns         ###   ########.fr       */
+/*   Updated: 2022/05/23 15:35:43 by cbuszyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	move_down(t_vars *vars);
 void	move_right(t_vars *vars);
 void	move_left(t_vars *vars);
 void	ft_close(t_vars *vars);
+void	invalid_char(t_vars *vars);
 
 
 char	*ft_get_next_line(int fd);

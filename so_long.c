@@ -6,7 +6,7 @@
 /*   By: cbuszyns <cbuszyns@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 15:00:21 by cbuszyns          #+#    #+#             */
-/*   Updated: 2022/05/16 15:23:44 by cbuszyns         ###   ########.fr       */
+/*   Updated: 2022/05/23 15:36:38 by cbuszyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int	main(int argc, char **argv)
 		return (0);
 	vars.path = argv[1];
 	read_map(&vars);
+	invalid_char(&vars);
 	vars.mlx = mlx_init();
 	load_img(&vars);
 	vars.win = mlx_new_window(vars.mlx, vars.x * 64, vars.y * 64, "voglio morire");

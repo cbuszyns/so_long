@@ -6,7 +6,7 @@
 /*   By: cbuszyns <cbuszyns@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 15:09:31 by cbuszyns          #+#    #+#             */
-/*   Updated: 2022/05/24 13:02:00 by cbuszyns         ###   ########.fr       */
+/*   Updated: 2022/05/24 14:37:04 by cbuszyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,11 @@ void	check_elements(t_vars *vars)
 		ft_printf("There is no player \n");
 		exit(0);
 	}
+	if (vars->p_count > 1)
+	{
+		ft_printf("This isn't a multiplayer game \n");
+		exit(0);
+	}
 	if (vars->c_count < 1)
 	{
 		ft_printf("There are no collectables \n");
@@ -57,7 +62,7 @@ void	check_elements(t_vars *vars)
 	}
 	if(vars->e_count < 1)
 	{
-		ft_printf("How are u supposed to finish the game? \n");
+		ft_printf("There is no exit \n");
 		exit(0);
 	}
 }

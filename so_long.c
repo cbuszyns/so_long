@@ -6,7 +6,7 @@
 /*   By: cbuszyns <cbuszyns@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 15:00:21 by cbuszyns          #+#    #+#             */
-/*   Updated: 2022/05/24 14:43:30 by cbuszyns         ###   ########.fr       */
+/*   Updated: 2022/05/24 16:23:16 by cbuszyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,19 @@ void ft_close(t_vars *vars)
 {
 	mlx_destroy_window(vars->mlx, vars->win);
 	exit(0);
+}
+
+int	display_moves(t_vars *vars)
+{
+	char	*moves;
+	char	*str;
+	char	*str2;
+
+	str = "Moves :";
+	moves = ft_itoa(vars->steps);
+	str2 = ft_strjoin(str, moves);
+	mlx_string_put(vars->mlx, vars->win, 20, 20, 0, str2);
+	return (0);
 }
 
 int	keypress(int keycode, t_vars *vars)
@@ -68,6 +81,7 @@ int	main(int argc, char **argv)
 	vars.win = mlx_new_window(vars.mlx, vars.x * 64, vars.y * 64, "voglio morire");
 	put_map(&vars);
 	mlx_hook(vars.win, 2, 1L<<0, keypress, &vars);
+	mlx_loop_hook(vars.mlx, display_moves, &vars);
 	mlx_loop(vars.mlx);
 }
 

@@ -6,7 +6,7 @@
 /*   By: cbuszyns <cbuszyns@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 15:00:12 by cbuszyns          #+#    #+#             */
-/*   Updated: 2022/05/23 15:35:43 by cbuszyns         ###   ########.fr       */
+/*   Updated: 2022/05/24 12:58:09 by cbuszyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ typedef struct	s_vars {
 	int		player_y;
 	int		coin;
 	int		steps;
+	int		p_count;
+	int		e_count;
+	int		c_count;
 }				t_vars;
 
 void	read_map(t_vars *vars);
@@ -42,7 +45,8 @@ void	move_down(t_vars *vars);
 void	move_right(t_vars *vars);
 void	move_left(t_vars *vars);
 void	ft_close(t_vars *vars);
-void	invalid_char(t_vars *vars);
+void	check_elements(t_vars *vars);
+void	check_walls(t_vars *vars);
 
 
 char	*ft_get_next_line(int fd);

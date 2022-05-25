@@ -6,7 +6,7 @@
 /*   By: cbuszyns <cbuszyns@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 15:09:31 by cbuszyns          #+#    #+#             */
-/*   Updated: 2022/05/24 14:37:04 by cbuszyns         ###   ########.fr       */
+/*   Updated: 2022/05/25 15:57:45 by cbuszyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	check_elements(t_vars *vars)
 		while (vars->map[i][j])
 		{
 			if(vars->map[i][j] != '1' && vars->map[i][j] != '0' && vars->map[i][j] != 'E' && vars->map[i][j] != 'P'
-				&& vars->map[i][j] != 'C' && vars->map[i][j] != '\n' && vars->map[i][j] != '\0')
+				&& vars->map[i][j] != 'C' && vars->map[i][j] != '\n' && vars->map[i][j] != '\0' && vars->map[i][j] != 'H')
 			{
 				ft_printf("Invalid character \n");
 				exit(0);

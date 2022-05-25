@@ -6,7 +6,7 @@
 /*   By: cbuszyns <cbuszyns@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 15:00:21 by cbuszyns          #+#    #+#             */
-/*   Updated: 2022/05/24 16:23:16 by cbuszyns         ###   ########.fr       */
+/*   Updated: 2022/05/25 15:58:34 by cbuszyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ void ft_close(t_vars *vars)
 int	display_moves(t_vars *vars)
 {
 	char	*moves;
-	char	*str;
-	char	*str2;
 
-	str = "Moves :";
 	moves = ft_itoa(vars->steps);
-	str2 = ft_strjoin(str, moves);
-	mlx_string_put(vars->mlx, vars->win, 20, 20, 0, str2);
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->img[0], 1 * 64, 0 * 64);
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->img[0], 0 * 64, 0 * 64);
+	mlx_string_put(vars->mlx, vars->win, 90, 20, 0, moves);
+	mlx_string_put(vars->mlx, vars->win, 20, 20, 0, "Moves :");
+	free(moves);
 	return (0);
 }
 
@@ -51,19 +51,28 @@ void	load_img(t_vars	*vars)
 	int	x;
 	int	y;
 
-	vars->path_to_img = (void **)malloc(sizeof(void **) * 5);
-	vars->img = (void **)malloc(sizeof(void **) * 5);
+	vars->path_to_img = (char **)malloc(sizeof(char *) * 9);
+	vars->img = (void **)malloc(sizeof(void *) * 9);
+
 	vars->path_to_img[0] = "./Sprites/wall.xpm";
-	vars->path_to_img[1] = "./Sprites/player.xpm";
+	vars->path_to_img[1] = "./Sprites/player_front.xpm";
 	vars->path_to_img[2] = "./Sprites/floor.xpm";
 	vars->path_to_img[3] = "./Sprites/coin.xpm";
 	vars->path_to_img[4] = "./Sprites/exit.xpm";
+	vars->path_to_img[5] = "./Sprites/player_back.xpm";
+	vars->path_to_img[6] = "./Sprites/player_right.xpm";
+	vars->path_to_img[7] = "./Sprites/player_left.xpm";
+	vars->path_to_img[8] = "./Sprites/enemy.xpm";
 
 	vars->img[0] = mlx_xpm_file_to_image(vars->mlx, vars->path_to_img[0], &x, &y);
 	vars->img[1] = mlx_xpm_file_to_image(vars->mlx, vars->path_to_img[1], &x, &y);
 	vars->img[2] = mlx_xpm_file_to_image(vars->mlx, vars->path_to_img[2], &x, &y);
 	vars->img[3] = mlx_xpm_file_to_image(vars->mlx, vars->path_to_img[3], &x, &y);
 	vars->img[4] = mlx_xpm_file_to_image(vars->mlx, vars->path_to_img[4], &x, &y);
+	vars->img[5] = mlx_xpm_file_to_image(vars->mlx, vars->path_to_img[5], &x, &y);
+	vars->img[6] = mlx_xpm_file_to_image(vars->mlx, vars->path_to_img[6], &x, &y);
+	vars->img[7] = mlx_xpm_file_to_image(vars->mlx, vars->path_to_img[7], &x, &y);
+	vars->img[8] = mlx_xpm_file_to_image(vars->mlx, vars->path_to_img[8], &x, &y);
 }
 
 int	main(int argc, char **argv)

@@ -6,7 +6,7 @@
 /*   By: cbuszyns <cbuszyns@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 12:28:08 by cbuszyns          #+#    #+#             */
-/*   Updated: 2022/05/24 13:01:45 by cbuszyns         ###   ########.fr       */
+/*   Updated: 2022/05/25 15:58:38 by cbuszyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	read_map(t_vars *vars)
 	vars->map = ft_split(line, '\n');
 	count_row(vars);
 	count_columns(vars);
+	free(line);
 }
 
 void	put_map(t_vars *vars)
@@ -80,6 +81,8 @@ void	put_map(t_vars *vars)
 				mlx_put_image_to_window(vars->mlx, vars->win, vars->img[3], x * 64, y * 64);
 				vars->coin++;
 			}
+			if(vars->map[y][x] == 'H')
+				mlx_put_image_to_window(vars->mlx, vars->win, vars->img[8], x * 64, y * 64);
 			x++;
 		}
 		y++;

@@ -6,7 +6,7 @@
 /*   By: cbuszyns <cbuszyns@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 15:00:12 by cbuszyns          #+#    #+#             */
-/*   Updated: 2022/05/24 12:58:09 by cbuszyns         ###   ########.fr       */
+/*   Updated: 2022/05/25 15:10:51 by cbuszyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct	s_vars {
 	int		y;
 	int		x;
 	void	**img;
-	void	**path_to_img;
+	char	**path_to_img;
 	int		player_x;
 	int		player_y;
 	int		coin;

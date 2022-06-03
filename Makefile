@@ -6,14 +6,14 @@
 #    By: cbuszyns <cbuszyns@student.42roma.it>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/10 14:57:20 by fdrudi            #+#    #+#              #
-#    Updated: 2022/05/23 15:37:08 by cbuszyns         ###   ########.fr        #
+#    Updated: 2022/05/27 11:29:21 by cbuszyns         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	so_long
 
 SRC			=	so_long.c map.c get_next_line.c \
-				movement.c check.c\
+				movement.c check.c so_long_utils.c\
 
 OBJ			=	$(SRC:.c=.o)
 
@@ -23,7 +23,7 @@ LIBFT		=	Libft/libft.a
 
 FT_PRINTF	=	ft_printf/libftprintf.a
 
-CC			=	gcc #-fsanitize=address
+CC			=	gcc 
 
 RM			=	rm -f
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbuszyns <cbuszyns@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: cbuszyns <cbuszyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 15:09:31 by cbuszyns          #+#    #+#             */
-/*   Updated: 2022/05/25 15:57:45 by cbuszyns         ###   ########.fr       */
+/*   Updated: 2022/06/03 15:02:55 by cbuszyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@ void	check_elements(t_vars *vars)
 				vars->e_count++;
 			if (vars->map[i][j] == 'C')
 				vars->c_count++;
+			if (vars->map[i][j] == 'H')
+			{
+				vars->e_x = j;
+				vars->e_y = i;
+			}
 			j++;
 		}
 		i++;

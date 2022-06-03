@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbuszyns <cbuszyns@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: cbuszyns <cbuszyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 15:00:21 by cbuszyns          #+#    #+#             */
-/*   Updated: 2022/05/25 15:58:34 by cbuszyns         ###   ########.fr       */
+/*   Updated: 2022/06/03 15:56:25 by cbuszyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void ft_close(t_vars *vars)
 	exit(0);
 }
 
-int	display_moves(t_vars *vars)
+void	display_moves(t_vars *vars)
 {
 	char	*moves;
 
@@ -28,7 +28,6 @@ int	display_moves(t_vars *vars)
 	mlx_string_put(vars->mlx, vars->win, 90, 20, 0, moves);
 	mlx_string_put(vars->mlx, vars->win, 20, 20, 0, "Moves :");
 	free(moves);
-	return (0);
 }
 
 int	keypress(int keycode, t_vars *vars)
@@ -51,8 +50,8 @@ void	load_img(t_vars	*vars)
 	int	x;
 	int	y;
 
-	vars->path_to_img = (char **)malloc(sizeof(char *) * 9);
-	vars->img = (void **)malloc(sizeof(void *) * 9);
+	vars->path_to_img = (char **)malloc(sizeof(char *) * 10);
+	vars->img = (void **)malloc(sizeof(void *) * 10);
 
 	vars->path_to_img[0] = "./Sprites/wall.xpm";
 	vars->path_to_img[1] = "./Sprites/player_front.xpm";
@@ -63,6 +62,7 @@ void	load_img(t_vars	*vars)
 	vars->path_to_img[6] = "./Sprites/player_right.xpm";
 	vars->path_to_img[7] = "./Sprites/player_left.xpm";
 	vars->path_to_img[8] = "./Sprites/enemy.xpm";
+	vars->path_to_img[9] = "./Sprites/exit2.xpm";
 
 	vars->img[0] = mlx_xpm_file_to_image(vars->mlx, vars->path_to_img[0], &x, &y);
 	vars->img[1] = mlx_xpm_file_to_image(vars->mlx, vars->path_to_img[1], &x, &y);
@@ -73,6 +73,7 @@ void	load_img(t_vars	*vars)
 	vars->img[6] = mlx_xpm_file_to_image(vars->mlx, vars->path_to_img[6], &x, &y);
 	vars->img[7] = mlx_xpm_file_to_image(vars->mlx, vars->path_to_img[7], &x, &y);
 	vars->img[8] = mlx_xpm_file_to_image(vars->mlx, vars->path_to_img[8], &x, &y);
+	vars->img[9] = mlx_xpm_file_to_image(vars->mlx, vars->path_to_img[9], &x, &y);
 }
 
 int	main(int argc, char **argv)
@@ -90,7 +91,8 @@ int	main(int argc, char **argv)
 	vars.win = mlx_new_window(vars.mlx, vars.x * 64, vars.y * 64, "voglio morire");
 	put_map(&vars);
 	mlx_hook(vars.win, 2, 1L<<0, keypress, &vars);
-	mlx_loop_hook(vars.mlx, display_moves, &vars);
+	// mlx_loop_hook(vars.mlx, display_moves, &vars);
+	// mlx_loop_hook(vars.mlx, enemy_animation, &vars);
 	mlx_loop(vars.mlx);
 }
 

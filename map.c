@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbuszyns <cbuszyns@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: cbuszyns <cbuszyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 12:28:08 by cbuszyns          #+#    #+#             */
-/*   Updated: 2022/05/25 15:58:38 by cbuszyns         ###   ########.fr       */
+/*   Updated: 2022/06/03 15:47:31 by cbuszyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,11 @@ void	put_map(t_vars *vars)
 {
 	int x;
 	int y;
+	int	i;
 
 	x = 0;
 	y = 0;
+	i = 0;
 	vars->coin = 0;
 	while(y < vars->y)
 	{
@@ -69,7 +71,11 @@ void	put_map(t_vars *vars)
 			if(vars->map[y][x] == '1')
 				mlx_put_image_to_window(vars->mlx, vars->win, vars->img[0], x * 64, y * 64);
 			if(vars->map[y][x] == 'E')
+			{
 				mlx_put_image_to_window(vars->mlx, vars->win, vars->img[4], x * 64, y * 64);
+				vars->e_x = x;
+				vars->e_y = y;
+			}
 			if(vars->map[y][x] == 'P')
 			{
 				vars->player_x = x;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbuszyns <cbuszyns@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: cbuszyns <cbuszyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 15:00:12 by cbuszyns          #+#    #+#             */
-/*   Updated: 2022/05/25 15:10:51 by cbuszyns         ###   ########.fr       */
+/*   Updated: 2022/06/03 15:55:58 by cbuszyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct	s_vars {
 	int		p_count;
 	int		e_count;
 	int		c_count;
+	int		e_x;
+	int		e_y;
 }				t_vars;
 
 void	read_map(t_vars *vars);
@@ -47,6 +49,10 @@ void	move_left(t_vars *vars);
 void	ft_close(t_vars *vars);
 void	check_elements(t_vars *vars);
 void	check_walls(t_vars *vars);
+void	you_won();
+void	you_lost();
+// int		enemy_animation(t_vars *vars);
+void	display_moves(t_vars *vars);
 
 
 char	*ft_get_next_line(int fd);

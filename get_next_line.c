@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbuszyns <cbuszyns@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: cbuszyns <cbuszyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 14:49:15 by cbuszyns          #+#    #+#             */
-/*   Updated: 2022/05/09 13:24:25 by cbuszyns         ###   ########.fr       */
+/*   Updated: 2022/06/06 15:09:21 by cbuszyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char *ft_strjoin2(char *s, char c)
+char	*ft_strjoin2(char *s, char c)
 {
-	int i;
-	char *new;
+	int		i;
+	char	*new;
 
 	i = 0;
 	if (!s)
@@ -34,10 +34,10 @@ char *ft_strjoin2(char *s, char c)
 	return (new);
 }
 
-char *ft_read_line(int fd, char *dst)
+char	*ft_read_line(int fd, char *dst)
 {
-	int len;
-	char buf;
+	int		len;
+	char	buf;
 
 	len = 1;
 	while (len != 0)
@@ -54,9 +54,9 @@ char *ft_read_line(int fd, char *dst)
 	return (dst);
 }
 
-char *ft_get_next_line(int fd)
+char	*ft_get_next_line(int fd)
 {
-	char *dst;
+	char	*dst;
 
 	if (fd < 0)
 		return (NULL);

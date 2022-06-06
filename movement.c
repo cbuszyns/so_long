@@ -6,7 +6,7 @@
 /*   By: cbuszyns <cbuszyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:48:00 by cbuszyns          #+#    #+#             */
-/*   Updated: 2022/06/06 13:22:39 by cbuszyns         ###   ########.fr       */
+/*   Updated: 2022/06/06 15:43:25 by cbuszyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	move_up(t_vars *v)
 	mlx_put_image_to_window(v->mx, v->w, v->m[2], v->px * 64, (v->py - 1) * 64);
 	mlx_put_image_to_window(v->mx, v->w, v->m[5], v->px * 64, (v->py - 1) * 64);
 	v->steps++;
-	ft_printf("Steps: %d\n", v->steps);
 	display_moves(v);
 	v->py--;
 }
@@ -65,7 +64,6 @@ void	move_down(t_vars *v)
 	mlx_put_image_to_window(v->mx, v->w, v->m[2], v->px * 64, (v->py + 1) * 64);
 	mlx_put_image_to_window(v->mx, v->w, v->m[1], v->px * 64, (v->py + 1) * 64);
 	v->steps++;
-	ft_printf("Steps: %d\n", v->steps);
 	display_moves(v);
 	v->py++;
 }
@@ -94,7 +92,6 @@ void	move_left(t_vars *v)
 	mlx_put_image_to_window(v->mx, v->w, v->m[2], (v->px - 1) * 64, v->py * 64);
 	mlx_put_image_to_window(v->mx, v->w, v->m[7], (v->px - 1) * 64, v->py * 64);
 	v->steps++;
-	ft_printf("Steps: %d\n", v->steps);
 	display_moves(v);
 	v->px--;
 }
@@ -123,7 +120,6 @@ void	move_right(t_vars *v)
 	mlx_put_image_to_window(v->mx, v->w, v->m[2], (v->px + 1) * 64, v->py * 64);
 	mlx_put_image_to_window(v->mx, v->w, v->m[6], (v->px + 1) * 64, v->py * 64);
 	v->steps++;
-	ft_printf("Steps: %d\n", v->steps);
 	display_moves(v);
 	v->px++;
 }

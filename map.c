@@ -6,92 +6,97 @@
 /*   By: cbuszyns <cbuszyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 12:28:08 by cbuszyns          #+#    #+#             */
-/*   Updated: 2022/06/03 15:47:31 by cbuszyns         ###   ########.fr       */
+/*   Updated: 2022/06/06 13:22:25 by cbuszyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	count_columns(t_vars *vars)
+void	count_columns(t_vars *v)
 {
 	int	y;
 	int	x;
 
 	y = 0;
-	while (vars->map[y])
+	while (v->mp[y])
 	{
 		x = 0;
-		while (vars->map[y][x])
+		while (v->mp[y][x])
 			x++;
 		y++;
 	}
-	vars->x = x;
+	v->x = x;
 }
 
-void	count_row(t_vars *vars)
+void	count_row(t_vars *v)
 {
 	int	count;
 
 	count = 0;
-	while (vars->map[count])
+	while (v->mp[count])
 		count++;
-	vars->y = count;
+	v->y = count;
 }
 
-void	read_map(t_vars *vars)
+void	read_map(t_vars *v)
 {
 	char	*line;
 	int		fd;
 
-	fd = open(vars->path, O_RDONLY);
+	fd = open(v->path, O_RDONLY);
 	line = ft_get_next_line(fd);
 	close (fd);
-	vars->map = ft_split(line, '\n');
-	count_row(vars);
-	count_columns(vars);
+	v->mp = ft_split(line, '\n');
+	count_row(v);
+	count_columns(v);
 	free(line);
 }
 
-void	put_map(t_vars *vars)
+void	put_map2(t_vars *v, int x, int y)
 {
-	int x;
-	int y;
+	if (v->mp[y][x] == 'E')
+	{
+		mlx_put_image_to_window(v->mx, v->w, v->m[4], x * 64, y * 64);
+		v->e_x = x;
+		v->e_y = y;
+	}
+	if (v->mp[y][x] == 'P')
+	{
+		v->px = x;
+		v->py = y;
+		mlx_put_image_to_window(v->mx, v->w, v->m[1], x * 64, y * 64);
+	}
+	if (v->mp[y][x] == 'C')
+	{
+		mlx_put_image_to_window(v->mx, v->w, v->m[3], x * 64, y * 64);
+		v->coin++;
+	}
+	if (v->mp[y][x] == 'H')
+		mlx_put_image_to_window(v->mx, v->w, v->m[8], x * 64, y * 64);
+	return ;
+}
+
+void	put_map(t_vars *v)
+{
+	int	x;
+	int	y;
 	int	i;
 
 	x = 0;
 	y = 0;
 	i = 0;
-	vars->coin = 0;
-	while(y < vars->y)
+	v->coin = 0;
+	while (y < v->y)
 	{
 		x = 0;
-		while(vars->map[y][x] != '\0')
+		while (v->mp[y][x] != '\0')
 		{
-			mlx_put_image_to_window(vars->mlx, vars->win, vars->img[2], x * 64, y * 64);
-			if(vars->map[y][x] == '1')
-				mlx_put_image_to_window(vars->mlx, vars->win, vars->img[0], x * 64, y * 64);
-			if(vars->map[y][x] == 'E')
-			{
-				mlx_put_image_to_window(vars->mlx, vars->win, vars->img[4], x * 64, y * 64);
-				vars->e_x = x;
-				vars->e_y = y;
-			}
-			if(vars->map[y][x] == 'P')
-			{
-				vars->player_x = x;
-				vars->player_y = y;
-				mlx_put_image_to_window(vars->mlx, vars->win, vars->img[1], x * 64, y * 64);
-			}
-			if(vars->map[y][x] == 'C')
-			{
-				mlx_put_image_to_window(vars->mlx, vars->win, vars->img[3], x * 64, y * 64);
-				vars->coin++;
-			}
-			if(vars->map[y][x] == 'H')
-				mlx_put_image_to_window(vars->mlx, vars->win, vars->img[8], x * 64, y * 64);
+			mlx_put_image_to_window(v->mx, v->w, v->m[2], x * 64, y * 64);
+			if (v->mp[y][x] == '1')
+				mlx_put_image_to_window(v->mx, v->w, v->m[0], x * 64, y * 64);
+			put_map2(v, x, y);
 			x++;
 		}
 		y++;
 	}
 }
-

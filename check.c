@@ -6,7 +6,7 @@
 /*   By: cbuszyns <cbuszyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 15:09:31 by cbuszyns          #+#    #+#             */
-/*   Updated: 2022/06/03 15:02:55 by cbuszyns         ###   ########.fr       */
+/*   Updated: 2022/06/06 14:41:01 by cbuszyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,78 +18,78 @@ void	map_error(void)
 	exit(0);
 }
 
-void	check_elements(t_vars *vars)
+void	element_utils(t_vars *v)
 {
-	int i;
-	int j;
-
-	i = 0;
-	while (vars->map[i])
-	{
-		j = 0;
-		while (vars->map[i][j])
-		{
-			if(vars->map[i][j] != '1' && vars->map[i][j] != '0' && vars->map[i][j] != 'E' && vars->map[i][j] != 'P'
-				&& vars->map[i][j] != 'C' && vars->map[i][j] != '\n' && vars->map[i][j] != '\0' && vars->map[i][j] != 'H')
-			{
-				ft_printf("Invalid character \n");
-				exit(0);
-			}
-			if (vars->map[i][j] == 'P')
-				vars->p_count++;
-			if (vars->map[i][j] == 'E')
-				vars->e_count++;
-			if (vars->map[i][j] == 'C')
-				vars->c_count++;
-			if (vars->map[i][j] == 'H')
-			{
-				vars->e_x = j;
-				vars->e_y = i;
-			}
-			j++;
-		}
-		i++;
-	}
-	if (vars->p_count < 1)
+	if (v->p_count < 1)
 	{
 		ft_printf("There is no player \n");
 		exit(0);
 	}
-	if (vars->p_count > 1)
+	if (v->p_count > 1)
 	{
 		ft_printf("This isn't a multiplayer game \n");
 		exit(0);
 	}
-	if (vars->c_count < 1)
+	if (v->c_count < 1)
 	{
 		ft_printf("There are no collectables \n");
 		exit(0);
 	}
-	if(vars->e_count < 1)
+	if (v->e_count < 1)
 	{
 		ft_printf("There is no exit \n");
 		exit(0);
 	}
+	return ;
 }
 
-void	check_walls(t_vars *vars)
+void	check_elements(t_vars *v)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (v->mp[++i])
+	{
+		j = -1;
+		while (v->mp[i][++j])
+		{
+			if (v->mp[i][j] != '1' && v->mp[i][j] != '0' && v->mp[i][j] != 'E'
+			&& v->mp[i][j] != 'P' && v->mp[i][j] != 'C' && v->mp[i][j] != '\n'
+			&& v->mp[i][j] != '\0' && v->mp[i][j] != 'H')
+			{
+				ft_printf("Invalid character \n");
+				exit(0);
+			}
+			if (v->mp[i][j] == 'P')
+				v->p_count = 1;
+			if (v->mp[i][j] == 'E')
+				v->e_count += 1;
+			if (v->mp[i][j] == 'C')
+				v->c_count += 1;
+		}		
+	}
+	element_utils(v);
+}
+
+void	check_walls(t_vars *v)
 {
 	int	x;
 	int	y;
 
 	y = 0;
-	while (vars->map[y])
+	while (v->mp[y])
 	{
 		x = 0;
-		while(vars->map[y][x])
+		while (v->mp[y][x])
 		{
-			if (vars->map[0][x] != '1')
+			if (v->mp[0][x] != '1')
 				map_error();
-			else if (vars->map[y][0] != '1')
+			else if (v->mp[y][0] != '1')
 				map_error();
-			else if (vars->map[y][vars->x - 1] != '1')
+			else if (v->mp[y][v->x - 1] != '1')
 				map_error();
-			else if (vars->map[vars->y - 1][x] != '1')
+			else if (v->mp[v->y - 1][x] != '1')
 				map_error();
 			x++;
 		}

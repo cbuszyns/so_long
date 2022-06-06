@@ -6,7 +6,7 @@
 /*   By: cbuszyns <cbuszyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 15:00:12 by cbuszyns          #+#    #+#             */
-/*   Updated: 2022/06/03 15:55:58 by cbuszyns         ###   ########.fr       */
+/*   Updated: 2022/06/06 13:36:35 by cbuszyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@
 # include <fcntl.h>
 
 typedef struct	s_vars {
-	void	*mlx;
-	void	*win;
-	char	**map;
+	void	*mx;
+	void	*w;
+	char	**mp;
 	void	*path;
 	int		y;
 	int		x;
-	void	**img;
-	char	**path_to_img;
-	int		player_x;
-	int		player_y;
+	void	**m;
+	char	**path_img;
+	int		px;
+	int		py;
 	int		coin;
 	int		steps;
 	int		p_count;
@@ -46,12 +46,11 @@ void	move_up(t_vars *vars);
 void	move_down(t_vars *vars);
 void	move_right(t_vars *vars);
 void	move_left(t_vars *vars);
-void	ft_close(t_vars *vars);
+int		ft_close(t_vars *vars);
 void	check_elements(t_vars *vars);
 void	check_walls(t_vars *vars);
 void	you_won();
 void	you_lost();
-// int		enemy_animation(t_vars *vars);
 void	display_moves(t_vars *vars);
 
 
